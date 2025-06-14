@@ -24,8 +24,10 @@ const Dasboard = () => {
     return (
         <>
             <Card sx={{
-                width: 600,
-                height: 300,
+                width: '100%',
+                maxWidth: 600,
+                mx: "auto",
+                height: "auto",
                 boxShadow: 5,
                 borderRadius: 3,
                 p: 2 //iç boşluklar
