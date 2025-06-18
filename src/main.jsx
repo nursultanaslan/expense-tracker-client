@@ -5,7 +5,8 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <StrictMode>   {/** Bazı bileşenleri iki defa calıstırır fonksiyonun pure function olup olmadıgını test etmek icin
+  yani her calıstırmada aynı sonucu veriyor mu eger veriyorsa pure functiondır. */}
     <BrowserRouter>
       <App />
     </BrowserRouter>

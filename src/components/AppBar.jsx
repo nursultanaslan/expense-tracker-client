@@ -48,11 +48,11 @@ function AppBar() {
         justifyContent="space-between"
         spacing={2}
         sx={{
-          px: 2,
+          px: {xs:1, md:2},
           top: 0,
           left: 0,
           width: '100%',
-          height: 60,
+          height: {xs: 56, md: 60},
           zIndex: 10,
           boxSizing: 'border-box',
           boxShadow: 'rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;',
@@ -60,11 +60,11 @@ function AppBar() {
         }}
       >
         <Stack direction="row" alignItems="center" spacing={1}>
-        <IconButton edge="start" color="inherit" aria-label="menu" onClick={() => toggleDrawer(true)}>
+        <IconButton edge="start" color="inherit" aria-label="menu" size= "small"onClick={() => toggleDrawer(true)}>
           <MenuOpenIcon />
         </IconButton>
 
-        <Typography variant="h3" gutterBottom sx={{ fontSize: '25px' }}>
+        <Typography gutterBottom sx={{ fontSize: {xs: '18px', md: '25px'} }}>
           Expense Tracker
         </Typography>
         </Stack>
@@ -100,7 +100,7 @@ function AppBar() {
                 </SvgIcon>}
             </IconButton>
           </Tooltip>
-          <Divider orientation="vertical" variant="middle" flexItem />
+          <Divider orientation="vertical" sx={{height: 30, mx:2}}/>
           <Tooltip title="Giriş" slots={{transition: Zoom}}>
             <IconButton>
               <PersonOutlineOutlinedIcon />
@@ -114,12 +114,13 @@ function AppBar() {
         <Box sx={{
           width: 250,
           height: '100%',
+          flexGrow: 1
         }}>
           <List>
             {pages.map((page, index) => (
               <ListItem key={index} disablePadding>
                 <ListItemButton onClick={() => handleNavigate(page.url)}>
-                  <ListItemIcon>
+                  <ListItemIcon sx={{mr:0}}>
                     {page.icon}
                   </ListItemIcon>
                   <ListItemText>{page.title}</ListItemText>

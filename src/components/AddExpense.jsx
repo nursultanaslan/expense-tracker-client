@@ -60,65 +60,65 @@ const AddExpense = () => {
 
   return (
     <>
-      <Stack direction='column' alignItems='center'> 
-      <Typography variant='h5' sx={{ marginBottom: 5 }}>Harcama Ekleme Ekranı</Typography>
-      <Box sx={{
-        width: 300,
-        borderRadius: 4,
-        padding: 3,
-        boxShadow: 3,
-        display: 'flex',
-        justifyContent: 'center', //dikeyde ortalar
-        alignItems: 'center',     //yatayda ortalar  
-        backgroundColor: 'white'
-      }}>
-        <Stack direction="column" spacing={4}>
+      <Stack direction='column' alignItems='center'>
+        <Typography variant='h5' sx={{ marginBottom: 5 }}>Harcama Ekleme Ekranı</Typography>
+        <Box sx={{
+          width: 300,
+          borderRadius: 4,
+          padding: 3,
+          boxShadow: 3,
+          display: 'flex',
+          justifyContent: 'center', //dikeyde ortalar
+          alignItems: 'center',     //yatayda ortalar  
+          backgroundColor: 'white'
+        }}>
+          <Stack direction="column" spacing={4}>
 
-          <form onSubmit={handleSubmit}>
-            <Stack spacing={2}>
-              <TextField 
-                label='Kategori' 
-                size='small'
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              />
-
-              <TextField
-                size='small'
-                label='Fiyat'
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                slotProps={{
-                  input: {
-                    startAdornment: <InputAdornment position="start">₺</InputAdornment>,
-                  },
-                }}
-              />
-
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker 
-                value={date}
-                format='DD-MM-YYYY' 
-                label='Tarih' 
-                onChange={(e) => setDate(e)} 
-                slotProps={{textField: {size: 'small'}, }}
+            <form onSubmit={handleSubmit}>
+              <Stack spacing={2}>
+                <TextField
+                  label='Kategori'
+                  size='small'
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
                 />
-              </LocalizationProvider>
-              
-              <TextField
-                label='Açıklama'
-                size='small'
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-              {errorMessage && <Alert severity='error'>{errorMessage}</Alert>}
-              <Button variant='outlined' type='submit'>Ekle</Button>
 
-            </Stack>
-          </form>
+                <TextField
+                  size='small'
+                  label='Fiyat'
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                  slotProps={{
+                    input: {
+                      startAdornment: <InputAdornment position="start">₺</InputAdornment>,
+                    },
+                  }}
+                />
 
-        </Stack>
-      </Box>      
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    value={date}
+                    format='DD-MM-YYYY'
+                    label='Tarih'
+                    onChange={(e) => setDate(e)}
+                    slotProps={{ textField: { size: 'small' }, }}
+                  />
+                </LocalizationProvider>
+
+                <TextField
+                  label='Açıklama'
+                  size='small'
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+                {errorMessage && <Alert severity='error'>{errorMessage}</Alert>}
+                <Button variant='outlined' type='submit'>Ekle</Button>
+
+              </Stack>
+            </form>
+
+          </Stack>
+        </Box>
       </Stack>
     </>
 
