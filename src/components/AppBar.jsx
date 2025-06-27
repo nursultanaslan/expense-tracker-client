@@ -1,4 +1,8 @@
-import { AppBar, IconButton, Typography, Toolbar, Tooltip, Box, Zoom, SvgIcon, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import {
+    AppBar, IconButton, Typography, Toolbar, Tooltip,
+    Box, Zoom, SvgIcon, Divider, Drawer, List, ListItem,
+    ListItemButton, ListItemIcon, ListItemText
+} from "@mui/material";
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import { DarkModeTwoTone, LightModeTwoTone } from "@mui/icons-material";
 import { useState } from "react";
@@ -62,7 +66,8 @@ const ResponsiveAppBar = () => {
                     <Typography
                         color="black"
                         sx={{ fontSize: { xs: '18px', md: '25px' }, flexGrow: 1 }}
-                    >Expense Tracker
+                    >
+                        Expense Tracker
                     </Typography>
 
                     <Box sx={{ display: 'flex' }}>
@@ -102,12 +107,12 @@ const ResponsiveAppBar = () => {
                             <IconButton>
                                 <PersonOutlineOutlinedIcon />
                             </IconButton>
-
                         </Tooltip>
                     </Box>
-
                 </Toolbar>
             </AppBar>
+
+            {/* açılır-kapanır menu */}
             <Drawer open={drawerOpen} onClose={() => toggleDrawer(false)}>
                 <Box sx={{
                     width: 250,
@@ -128,7 +133,7 @@ const ResponsiveAppBar = () => {
                     </List>
                 </Box>
             </Drawer>
-            <Outlet />
+            <Outlet />  {/*içerikleri görüntülüyor */}
         </>
     )
 }

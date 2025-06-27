@@ -9,7 +9,7 @@ const Dasboard = () => {
 
   useEffect(() => {
     fetch("https://api.frankfurter.app/latest?from=TRY")
-      .then((res) => res.json())    //json'a döndü veriler
+      .then((res) => res.json())                //json'a döndü veriler
       .then((data) => {
         console.log("Api'den gelen Data", data);
         setExchangeRates(data.rates);
