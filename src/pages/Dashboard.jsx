@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography, Divider, Stack, Box, Grid } from "@mui/material";
+import { Card, CardContent, Typography, Divider, Stack, Box, Grid, Container } from "@mui/material";
 import currencyList from "../constant/currencyList";
 import { Fragment, useEffect, useState } from 'react';
 import 'flag-icons/css/flag-icons.min.css';
@@ -20,12 +20,9 @@ const Dasboard = () => {
   }, []);
 
   return (
-    <>
+    <Container maxWidth= "xl">
       <Card sx={{
         width: '100%',
-        maxWidth: 600,
-        mx: "auto",
-        height: "auto",
         boxShadow: 5,
         borderRadius: 3,
         p: { xs: 1, sm: 2, md: 3 }                       //iç boşluklar
@@ -83,7 +80,8 @@ const Dasboard = () => {
 
         </CardContent>
       </Card>
-    </>
+      </Container>
+    
   )
 }
 export default Dasboard;
