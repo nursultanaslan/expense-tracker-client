@@ -58,13 +58,13 @@ button:focus-visible {
   outline: 2px auto -webkit-focus-ring-color;
 }
 
-.MuiIconButton-root:focus,
+.MuiIconButton-root:focus,  /* iconbutona tıkladıktan sonra focus ringi devre dışı bıraktık*/
 .MuiIconButton-root:focus-visible {
   outline: none !important;
   box-shadow: none !important;
 }
 
-.MuiButton-root:focus,
+.MuiButton-root:focus,   /* icona tıkladıktan sonra aynı sekilde etrafındaki focus ringi devre dışı bıraktık*/
 .MuiButton-root:focus-visible{
   outline: none !important;
   box-shadow: none !important;
@@ -77,7 +77,7 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: #ffffff;
   }
   button {
     background-color: #f9f9f9;

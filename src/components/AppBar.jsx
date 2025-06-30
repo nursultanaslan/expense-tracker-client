@@ -1,7 +1,7 @@
 import {
     AppBar, IconButton, Typography, Toolbar, Tooltip,
     Box, Zoom, SvgIcon, Divider, Drawer, List, ListItem,
-    ListItemButton, ListItemIcon, ListItemText
+    ListItemButton, ListItemIcon, ListItemText,
 } from "@mui/material";
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import { DarkModeTwoTone, LightModeTwoTone } from "@mui/icons-material";
@@ -20,18 +20,22 @@ const ResponsiveAppBar = () => {
     const navigate = useNavigate();
 
     const pages = [
-        { title: "Anasayfa", url: "/dashboard", icon: <HomeOutlinedIcon /> },
+        { title: "Dashboard", url: "/dashboard", icon: <HomeOutlinedIcon /> },
         { title: "Harcama Ekle", url: "/addExpense", icon: <CurrencyLiraRoundedIcon /> },
         { title: "Harcamaları Listele", url: "/expenses", icon: <SellOutlinedIcon /> }
     ]
 
     const handleNavigate = (url) => {
-        toggleDrawer(false);         //drawer'ı kapat
+        toggleDrawerClose();         //drawer'ı kapat
         navigate(url);                //url'ye git
     }
 
-    const toggleDrawer = (open) => {
-        setDrawerOpen(open)
+    const toggleDrawerOpen = () => {
+        setDrawerOpen(true)
+    }
+
+    const toggleDrawerClose = () =>{
+        setDrawerOpen(false);
     }
 
     const toggleTheme = () => {
@@ -44,8 +48,10 @@ const ResponsiveAppBar = () => {
 
     return (
         <>
+        <Box sx={{display: "flex"}}>
             <AppBar
                 position="fixed"
+                open = {drawerOpen}
                 sx={{
                     top: 0,
                     width: '%100',
@@ -59,7 +65,7 @@ const ResponsiveAppBar = () => {
                         size="large"
                         edge="start"
                         aria-label="menu"
-                        onClick={() => toggleDrawer(true)}
+                        onClick={toggleDrawerOpen}
                     >
                         <MenuOpenIcon />
                     </IconButton>
@@ -112,8 +118,9 @@ const ResponsiveAppBar = () => {
                 </Toolbar>
             </AppBar>
 
+
             {/* açılır-kapanır menu */}
-            <Drawer open={drawerOpen} onClose={() => toggleDrawer(false)}>
+            <Drawer open={drawerOpen} onClose={toggleDrawerClose}>
                 <Box sx={{
                     width: 250,
                     height: '100%',
@@ -133,7 +140,8 @@ const ResponsiveAppBar = () => {
                     </List>
                 </Box>
             </Drawer>
-            <Outlet />  {/*içerikleri görüntülüyor */}
+            <Outlet />  {/* menudeki içerikleri görüntülüyor */}
+            </Box>
         </>
     )
 }
