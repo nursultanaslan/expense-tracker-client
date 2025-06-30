@@ -61,7 +61,7 @@ const AddExpense = () => {
   return (
     <>
       <Stack direction='column' alignItems='center'>
-        <Typography variant='h5' sx={{ marginBottom: 5 }}>Harcama Ekleme Ekranı</Typography>
+        <Typography variant='h5' sx={{ marginBottom: 5, color: 'text.primary' }}>Harcama Ekleme Ekranı</Typography>
         <Box sx={{
           width: 300,
           borderRadius: 4,

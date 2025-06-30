@@ -1,1 +1,5 @@
+#tüm sayfalar tek bir indexhtml dosyasında render edilir. 
+#netlify statik sunucudur route'u bulamaz. serverin bilmesi lazım bu yüzden netlify'a nereye yonlendirecegini gösteririz.
+
+
 /*    /index.html   200

@@ -1,4 +1,4 @@
-import { Button, Stack, Tooltip, Typography, Zoom, Box, ButtonBase } from "@mui/material";
+import { Button, Stack, Tooltip, Typography, Zoom, Box, ButtonBase, Container } from "@mui/material";
 import { useState } from "react";
 
 
@@ -21,6 +21,7 @@ export default function Page404() {
 
 
     return (
+        <Container maxWidth="xl">
         <Stack direction="column" alignItems="center" spacing={2}>
             <Typography variant="h4">
                 Üzgünüz, sayfa mevcut değil.
@@ -42,5 +43,6 @@ export default function Page404() {
             </Tooltip>
             <Button variant="contained">Ana Sayfaya Dön</Button>
         </Stack>
+        </Container>
     )
 }
