@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = 'http://localhost:8080/api';
+const BASE_URL = 'https://expense-tracker-app-66ab31bfb3a8.herokuapp.com/api';
 
 export const getAllExpenses = () =>{
     return axios.get(BASE_URL);
