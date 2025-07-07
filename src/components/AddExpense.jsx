@@ -37,7 +37,7 @@ const AddExpense = () => {
     }
 
     try {
-      const response = await axiosInstance.post('/api/expenses', {
+      const response = await axiosInstance.post('/api/expense', {
         amount: Number(amount),
         category,
         description,

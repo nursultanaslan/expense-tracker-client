@@ -24,7 +24,7 @@ const ExpenseList = () => {
     useEffect(() => {
         const fetchExpenses = async () => {
             try {
-                const response = await axiosInstance('/api/expenses');
+                const response = await axiosInstance('/api/all-expenses');
                 setExpenses(response.data);
             } catch (error) {
                 console.log('Error fetching expenses', error);
