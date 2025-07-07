@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const axiosInstance = axios.create({
-    baseURL: 'https://expense-tracker-app-66ab31bfb3a8.herokuapp.com/api',
+    baseURL: 'https://expense-tracker-app-66ab31bfb3a8.herokuapp.com',
     headers:{
         'Content-Type' :'application/json',
     },
