@@ -1,6 +1,6 @@
 import { Button, DialogActions, DialogContent, DialogTitle, List, ListItem, ListItemText, Dialog } from "@mui/material";
 import { useEffect, useState } from "react";
-import axiosInstance from '../services/axiosInstance';
+import http from '../http-common';
 
 
 const ExpenseList = () => {
@@ -14,7 +14,7 @@ const ExpenseList = () => {
 
     const deleteExpense = async (id) => {
         try {
-            await axiosInstance.delete(`/api/expenses/${id}`);
+            await http.delete(`/api/expenses/${id}`);
             setExpenses(expenses.filter(e => e.id !== id));
         } catch (error) {
             console.log('Silme işlemi başarısız!', error);
@@ -24,7 +24,7 @@ const ExpenseList = () => {
     useEffect(() => {
         const fetchExpenses = async () => {
             try {
-                const response = await axiosInstance('/api/all-expenses');
+                const response = await http('/api/all-expenses');
                 setExpenses(response.data);
             } catch (error) {
                 console.log('Error fetching expenses', error);
@@ -38,7 +38,6 @@ const ExpenseList = () => {
     return (
         <div>
             <Button variant="contained" onClick={() => setShowList(!showList)}>Harcamaları Listele</Button>
-
             {
                 showList && (   //listeyi görüntüle: true ise harcamaları getir. 
                     <List>
@@ -59,18 +58,20 @@ const ExpenseList = () => {
                                 >
                                     Sil
                                 </Button>
-
                             </ListItem>
                         ))}
                     </List>
                 )
             }
-            <Dialog onClose={() => setConfirmOpen(false)} open={confirmOpen}>
+            <Dialog 
+            onClose={() => setConfirmOpen(false)} 
+            open={confirmOpen}
+            closeAfterTransition={false}>
                 <DialogTitle>Silmek istediğine emin misin?</DialogTitle>
                 <DialogContent>Bu işlem geri alınamaz.</DialogContent>
                 <DialogActions>
                     <Button variant="outlined" onClick={() => setConfirmOpen(false)} >Vazgeç</Button>
-                    <Button variant="outlined" sx={{ ml: 5}} onClick={() => {
+                    <Button variant="outlined" autoFocus sx={{ ml: 5}} onClick={() => {
                         deleteExpense(deleteId)
                         setConfirmOpen(false);
                     }

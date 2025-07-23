@@ -1,5 +1,5 @@
 import { Stack, TextField, Button, Typography, Box, InputAdornment, Alert } from '@mui/material';
-import axiosInstance from '../services/axiosInstance';
+import http from '../http-common';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -37,7 +37,7 @@ const AddExpense = () => {
     }
 
     try {
-      const response = await axiosInstance.post('/api/expense', {
+      const response = await http.post('/api/expense', {
         amount: Number(amount),
         category,
         description,

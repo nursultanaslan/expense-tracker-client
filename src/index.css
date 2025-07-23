@@ -50,26 +50,14 @@ button {
   transition: border-color 0.25s;
   text-transform: none !important;
 }
-button:hover {
+/* button:hover {
   border-color: #5c9ce0;
 }
 button:focus,
 button:focus-visible {
   outline: 2px auto -webkit-focus-ring-color;
 }
-
-.MuiIconButton-root:focus,  /* iconbutona tıkladıktan sonra focus ringi devre dışı bıraktık*/
-.MuiIconButton-root:focus-visible {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.MuiButton-root:focus,   /* icona tıkladıktan sonra aynı sekilde etrafındaki focus ringi devre dışı bıraktık*/
-.MuiButton-root:focus-visible{
-  outline: none !important;
-  box-shadow: none !important;
-  
-}
+ */
 
 @media (prefers-color-scheme: light) {
   :root {
