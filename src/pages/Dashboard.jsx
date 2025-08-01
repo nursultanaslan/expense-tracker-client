@@ -196,12 +196,12 @@ const Home = () => {
                                 endAdornment: <InputAdornment>{firstSelectedCur?.code}</InputAdornment>
                             }
                         }}
-                        onChange={(e) =>
-                            setAmount(e.target.value)}
+                        onChange={(e) => setAmount(e.target.value)}
                         value={amount}
                         size="small"
                         label="Tutar"
-                        sx={{ width: 300 }} />
+                        sx={{ width: 300 }} 
+                    />
 
                     <Divider sx={{ pt: 4 }} />
 
@@ -236,7 +236,8 @@ const Home = () => {
                         value={convertedAmount}
                         size="small"
                         label="Tutar"
-                        sx={{ width: 300, pb: 2}} />
+                        sx={{ width: 300, pb: 2}} 
+                    />
                 </DialogContent>
 
             </Dialog>

@@ -26,16 +26,8 @@ const ResponsiveAppBar = () => {
     ]
 
     const handleNavigate = (url) => {
-        toggleDrawerClose();         //drawer'ı kapat
+        setDrawerOpen(false);         //drawer'ı kapat
         navigate(url);                //url'ye git
-    }
-
-    const toggleDrawerOpen = () => {
-        setDrawerOpen(true)
-    }
-
-    const toggleDrawerClose = () =>{
-        setDrawerOpen(false);
     }
 
     const toggleTheme = () => {
@@ -58,14 +50,13 @@ const ResponsiveAppBar = () => {
                     zIndex: 10,
                     backgroundColor: "rgba(255, 255, 255, 0.8)",
                     backdropFilter: 'blur(2px)'
-
                 }}>
                 <Toolbar>
                     <IconButton
                         size="large"
                         edge="start"
                         aria-label="menu"
-                        onClick={toggleDrawerOpen}
+                        onClick={()=>setDrawerOpen(true)}
                     >
                         <MenuOpenIcon />
                     </IconButton>
@@ -120,7 +111,7 @@ const ResponsiveAppBar = () => {
 
 
             {/* açılır-kapanır menu */}
-            <Drawer open={drawerOpen} onClose={toggleDrawerClose}>
+            <Drawer open={drawerOpen} onClose={()=>setDrawerOpen(false)}>
                 <Box sx={{
                     width: 250,
                     height: '100%',
@@ -140,7 +131,7 @@ const ResponsiveAppBar = () => {
                     </List>
                 </Box>
             </Drawer>
-            <Outlet />  {/* menudeki içerikleri görüntülüyor */}
+            <Outlet />  {/* menudeki seçimden sonra o seçime dair içerikleri anasayfada görüntülüyor */}
             </Box>
         </>
     )

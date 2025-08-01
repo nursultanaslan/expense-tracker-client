@@ -1,4 +1,4 @@
-import { Button, DialogActions, DialogContent, DialogTitle, List, ListItem, ListItemText, Dialog } from "@mui/material";
+import { Button, DialogActions, DialogContent, DialogTitle, List, ListItem, ListItemText, Dialog,Container } from "@mui/material";
 import { useEffect, useState } from "react";
 import http from '../http-common';
 
@@ -36,7 +36,7 @@ const ExpenseList = () => {
     }, [showList])
 
     return (
-        <div>
+        <Container>
             <Button variant="contained" onClick={() => setShowList(!showList)}>Harcamaları Listele</Button>
             {
                 showList && (   //listeyi görüntüle: true ise harcamaları getir. 
@@ -66,20 +66,22 @@ const ExpenseList = () => {
             <Dialog 
             onClose={() => setConfirmOpen(false)} 
             open={confirmOpen}
-            closeAfterTransition={false}>
+            closeAfterTransition={false}
+            >
                 <DialogTitle>Silmek istediğine emin misin?</DialogTitle>
                 <DialogContent>Bu işlem geri alınamaz.</DialogContent>
                 <DialogActions>
                     <Button variant="outlined" onClick={() => setConfirmOpen(false)} >Vazgeç</Button>
                     <Button variant="outlined" autoFocus sx={{ ml: 5}} onClick={() => {
                         deleteExpense(deleteId)
-                        setConfirmOpen(false);
-                    }
-                    } >Evet, Sil.</Button>
+                        setConfirmOpen(false);}}
+                    >
+                        Evet, Sil.
+                    </Button>
                 </DialogActions>
 
             </Dialog>
-        </div>
+        </Container>
 
     )
 

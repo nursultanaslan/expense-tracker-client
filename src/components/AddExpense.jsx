@@ -1,11 +1,11 @@
-import { Stack, TextField, Button, Typography, Box, InputAdornment, Alert } from '@mui/material';
+import { Stack, TextField, Button, Typography, Box, InputAdornment, Alert, Snackbar, Fade } from '@mui/material';
 import http from '../http-common';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
+
 
 const AddExpense = () => {
 
@@ -14,10 +14,19 @@ const AddExpense = () => {
   const [date, setDate] = useState(dayjs());
   const [description, setDescription] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const navigate = useNavigate();
+  const [successfulMessage, setSuccessfulMessage] = useState('');
+  const [open, setOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(null)
+
+  const clearForm = () => {
+    setAmount('');
+    setCategory('');
+    setDescription('');
+    setDate(dayjs());
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();    //butona basınca sayfa yenilenir JS durur axios istegi gönderilmez. bu yuzden bunu ekledik.(unwantend default browser behavior.)
+    e.preventDefault();    //forma submit gelince sayfayı yeniden yüklemeye çalışır. bunu eklersek reload onune gecmis oluruz(unwantend default browser behavior.)
     //bunun bi de e.stopPropagation() : bir event'in üst bileşenlere ulaşmasını engellemek icin kullanılır.
 
     if (
@@ -31,7 +40,7 @@ const AddExpense = () => {
       return;
     }
 
-    if (isNaN(Number(amount))) {
+    if (!/^\d+(\.\d{1,2})?$/.test(amount)) {
       setErrorMessage('Fiyat alanı sayı olmalıdır!');
       return;
     }
@@ -44,23 +53,45 @@ const AddExpense = () => {
         date: date.format('YYYY-MM-DD'),
       });
 
-      console.log("Expense added.", response.data);
       //harcama eklendikten sonra inputlara girilen veriler temizlenir bu sekilde.
-      setAmount('');
-      setCategory('');
-      setDescription('');
-      setDate(dayjs());
-      setErrorMessage('');
+      if (response.status >= 200 && response.status < 300) {
+        console.log(response.status);
+        console.log("Expense added successfully!", response.data);
+        clearForm();
 
-      navigate('/expenses');
+      }
+
+      setSuccessfulMessage('Harcama Eklendi.');
+      setOpen(true);
+      setIsSuccess(true)
+
     } catch (error) {
-      console.log("Error adding expense", error);
+      if (error.response) {
+        console.log(error.response.status);
+        console.log(error.response.data);
+      } else if (error.request) {
+        console.log('The request was made but no response was received', error.request);
+      }
+      setSuccessfulMessage('Harcama eklenemedi!')
+      setOpen(true)
+      setIsSuccess(false)
     }
   }
 
   return (
     <>
       <Stack direction='column' alignItems='center'>
+        <Snackbar
+          open={open}
+          autoHideDuration={5000}
+          onClose={() => setOpen(false)}
+        >
+          {isSuccess ?
+            <Alert severity='success'>{successfulMessage}</Alert> :
+            <Alert severity='error'>{successfulMessage}</Alert>}
+
+        </Snackbar>
+
         <Typography variant='h5' sx={{ marginBottom: 5, color: 'text.primary' }}>Harcama Ekleme Ekranı</Typography>
         <Box sx={{
           width: 300,
@@ -113,13 +144,12 @@ const AddExpense = () => {
                 />
                 {errorMessage && <Alert severity='error'>{errorMessage}</Alert>}
                 <Button variant='outlined' type='submit'>Ekle</Button>
-
               </Stack>
             </form>
-
           </Stack>
         </Box>
       </Stack>
+
     </>
 
   )

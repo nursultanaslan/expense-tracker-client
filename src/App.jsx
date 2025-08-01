@@ -6,7 +6,6 @@ import ScrollToTop from './components/ScrollToTop';
 
 function App() {
 
-  
   const appTheme = createTheme({
     palette: {
       primary: {
@@ -22,7 +21,7 @@ function App() {
 
   return (
     <ThemeProvider theme={appTheme}>
-      <ScrollToTop/>
+      <ScrollToTop />
       <Router />
     </ThemeProvider>
   )

@@ -1,6 +1,6 @@
 
 import { Navigate, useRoutes } from "react-router-dom";
-import AddExpense from "./components/AddExpense";
+import AddExpenseNewVer from "./components/AddExpenseNewVer";
 import ExpenseList from "./components/ExpenseList";
 import Home from "./pages/Dashboard";
 import NotFound from "./pages/Page404";
@@ -13,7 +13,7 @@ export default function Router() {
             path: '/',
             element: <ResponsiveAppBar />,
             children: [
-                { path: '/addExpense', element: <AddExpense /> },
+                { path: '/addExpense', element: <AddExpenseNewVer/> },
                 { path: '/expenses', element: <ExpenseList /> },
                 { path: '/dashboard', element: <Home /> },
                 { path: '404', element: <NotFound /> },
