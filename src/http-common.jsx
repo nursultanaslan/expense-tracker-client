@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios";         //initializes axios with HTTP BaseURL and headers.
 
 export default axios.create({
     baseURL: 'http://localhost:8080',

@@ -1,4 +1,5 @@
 import { Stack, TextField, Button, Typography, Box, InputAdornment, Alert, Snackbar, Fade, Paper, Container } from '@mui/material';
+import { useEffect } from 'react';
 import http from '../http-common';
 import { useForm, Controller } from "react-hook-form";
 import FormProvider from './FormProvider';
@@ -13,15 +14,29 @@ const AddExpense = () => {
   const methods = useForm({
     resolver: yupResolver(RegisterSchema),
     defaultValues: initialValues,
-    mode : 'all'
+    mode : 'all',
+    resetOptions: {
+      keepErrors : false, 
+      keepDirty : true,
+      keepDirtyValues: true,
+      keepValues: false,
+      keepDefaultValues: true,
+      keepTouched: true,
+      keepIsValid: true 
+    }
   });
 
   const {
     handleSubmit,
     control,
-    formState: { errors },
+    formState: { errors, isSubmitSuccessful },
     reset
   } = methods;
+
+  
+  useEffect(()=>{
+      reset();
+  }, [isSubmitSuccessful])
 
   const onSubmit = async (data) => {
 
@@ -32,7 +47,7 @@ const AddExpense = () => {
       description: data.description,
       
     });
-    reset();     //reset methodunu degistirecegim
+    console.log('Harcama eklendi', data);
 
   }
 

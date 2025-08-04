@@ -16,6 +16,7 @@ export default function RHFDate({name}){
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 value={value ? dayjs(value) : null}
+                disableFuture
                 format='DD-MM-YYYY'
                 label='Tarih'
                 onChange={(newValue) => {
