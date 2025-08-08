@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 
-export default function RHFTextField({name, ...other}){
+export default function RHFTextField({name, amountStartAdornment, ...other}){
     
     const {control} =useFormContext();
 
@@ -15,6 +15,11 @@ export default function RHFTextField({name, ...other}){
             size="small"
             error={!!error}
             helperText={error && error.message }
+            slotProps={{
+                input:{
+                    startAdornment: amountStartAdornment
+                }
+            }}
             {...other}
             />
         )}/>

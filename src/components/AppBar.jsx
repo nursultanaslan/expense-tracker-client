@@ -12,6 +12,7 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
 import CurrencyLiraRoundedIcon from '@mui/icons-material/CurrencyLiraRounded';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import { Link as RouterLink } from 'react-router';
 
 const ResponsiveAppBar = () => {
     const [drawerOpen, setDrawerOpen] = useState(false)  //drawer açık mı kapalı mı? başlangıcta kapalı
@@ -62,7 +63,9 @@ const ResponsiveAppBar = () => {
                     </IconButton>
                     <Typography
                         color="black"
-                        sx={{ fontSize: { xs: '18px', md: '25px' }, flexGrow: 1 }}
+                        sx={{ fontSize: { xs: '18px', md: '25px' }, flexGrow: 1}}
+                        component={RouterLink}
+                        to='/'
                     >
                         Expense Tracker
                     </Typography>

@@ -4,6 +4,7 @@ export const LOCALE_TR = {
     homePage : "Anasayfa",
     addExpense : "Harcama Ekle",
     listExpense : "Harcamaları Listele",
+    addExpenseScreen : "Harcama Ekleme Ekranı"
 
 
 }
